@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<style>
+
+    section{
+        width: 300px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    section div{
+        margin: 4px;
+        width: 40px;
+        height: 40px;
+        background-color: rgb(0, 255, 76);
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+    h1{
+        color: red;
+        }
+</style>
+
+<body>
+    <h1>Programa Luis Fernando</h1>
+    
+
+    <div class="w">
+        <section>
+
+            {% for x in range(resultado|count) %}
+                {% if resultado[x] == 0%}
+                    <div style="background-color: crimson;">{{resultado[x]}}</div>
+                {% else %}
+                    <div>{{resultado[x]}}</div>
+                {% endif %}
+            {% endfor %}
+ <!--
+          <div>C1</div>
+          <div>C2</div>
+          <div>C3</div>
+          <div>C4</div>
+          <div>C5</div>
+          <div>C6</div>
+
+          <div>C7</div>
+          <div>C8</div>
+          <div>C9</div>
+          <div>C10</div>
+          <div>C11</div>
+          <div>C12</div>
+
+          <div>C13</div>
+          <div>C14</div>
+          <div>C15</div>
+          <div>C16</div>
+          <div>C17</div>
+          <div>C18</div>
+
+          <div>C19</div>
+          <div>C20</div>
+          <div>C21</div>
+          <div>C22</div>
+          <div>C23</div>
+          <div>C24</div>
+
+          <div>C25</div>
+          <div>C26</div>
+          <div>C27</div>
+          <div>C28</div>
+          <div>C29</div>
+          <div>C30</div>
+
+          <div>C31</div>
+          <div>C32</div>
+          <div>C33</div>
+          <div>C34</div>
+          <div>C35</div>
+          <div>C36</div>
+          -->
+        </section>
+      </div>
+
+
+</body>
+</html>
