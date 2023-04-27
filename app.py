@@ -1,17 +1,20 @@
 from flask import Flask, render_template
 import busca_sem_info_grid_cruzamentos
+import busca_com_pesos_grid_FATEC
 app = Flask(__name__)
 
 @app.route("/")
 def home():
     dim_x = 6
     dim_y = 6
-    origem  = [2,3]
-    destino = [4,3]
+    origem  = [0,0]
+    destino = [5,5]
     mapa, obs = busca_sem_info_grid_cruzamentos.gera_Ambiente(dim_x,dim_y)
-    limite = 30
+    limite = 12
 
-    caminho = busca_sem_info_grid_cruzamentos.sol.amplitude(origem,destino,dim_x,dim_y,obs)
+    caminho = busca_sem_info_grid_cruzamentos.sol.prof_limitada(origem,destino,dim_x,dim_y,obs,limite)
+
+   # caminho, custo = busca_com_pesos_grid_FATEC.sol.a_estrela(origem,destino,dim_x,dim_y,obs)
     caminho1 = []
 
     for no in caminho:
@@ -36,6 +39,7 @@ def home():
         else:
             testeElementos.append(0)
     
+    return testeElementos
     return render_template('index.html', resultado=testeElementos)
 
 if __name__ == "__main__":

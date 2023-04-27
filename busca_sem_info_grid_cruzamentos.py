@@ -260,12 +260,9 @@ class busca(object):
         linha.append(0)
         visitado.append(linha)
 
-        while l1.vazio() is not None:
+        while l1.vazio()!=True:
             # remove o primeiro da fila
             atual = l1.deletaUltimo()
-            
-            
-            
             if atual.nivel < limite:
                 x = atual.coordenada[0]
                 y = atual.coordenada[1]
@@ -304,7 +301,72 @@ class busca(object):
                             print("Árvore de busca:\n",l2.exibeLista())
                             return caminho
         
-        return "caminho não encontrado"
+        return caminho
+    
+    def aprof_iterativo(self, inicio, fim, dx, dy, obs, lim_max):
+        
+        for limite in range(1,lim_max):
+
+            caminho = []
+            # manipular a FILA para a busca
+            l1 = lista()
+    
+            # cópia para apresentar o caminho (somente inserção)
+            l2 = lista()
+    
+            # insere ponto inicial como nó raiz da árvore
+            l1.insereUltimo(inicio,0,None)
+            l2.insereUltimo(inicio,0,None)
+    
+            # controle de nós visitados
+            visitado = []
+            linha = []
+            linha.append(inicio)
+            linha.append(0)
+            visitado.append(linha)
+    
+            while l1.vazio()!=True:
+                # remove o primeiro da fila
+                atual = l1.deletaUltimo()
+                if atual.nivel < limite:
+                    x = atual.coordenada[0]
+                    y = atual.coordenada[1]
+        
+                    filhos = []
+                    filhos = self.sucessor(x,y,dx,dy,obs)
+        
+                    # varre todos as conexões dentro do grafo a partir de atual
+                    for novo in filhos:
+        
+                        flag = True  # pressuponho que não foi visitado
+        
+                        # para cada conexão verifica se já foi visitado
+                        for j in range(len(visitado)):
+                            if visitado[j][0]==novo:
+                                if visitado[j][1]<=(atual.nivel+1):
+                                    flag = False
+                                else:
+                                    visitado[j][1]=atual.nivel+1
+                                break
+                        
+                        # se não foi visitado inclui na fila
+                        if flag:
+                            l1.insereUltimo(novo, atual.nivel + 1, atual)
+                            l2.insereUltimo(novo, atual.nivel + 1, atual)
+        
+                            # marca como visitado
+                            linha = []
+                            linha.append(novo)
+                            linha.append(atual.nivel+1)
+                            visitado.append(linha)
+        
+                            # verifica se é o objetivo
+                            if novo == fim:
+                                caminho += l2.exibeCaminho()
+                                print("Árvore de busca:\n",l2.exibeLista())
+                                return caminho
+        
+        return caminho
     
     # BUSCA BIDIRECIONAL
     def bidirecional(self, inicio, fim, dx, dy, obs):
@@ -456,7 +518,7 @@ class busca(object):
                             
             ni += 1
     
-        return "caminho não encontrado"
+        return caminho
     
     
     def sucessor(self,x,y,dx,dy,obs):
@@ -535,22 +597,23 @@ sol = busca()
 caminho = []
 
 # PROBLEMA C
-'''
-dim_x = 10
-dim_y = 11
-origem  = [7,9]
-destino = [1,1]
+
+dim_x = 6
+dim_y = 6
+origem  = [0,0]
+destino = [5,5]
 mapa, obs = gera_Ambiente(dim_x,dim_y)
-limite = 30
+limite = 12
 #print(mapa)
-'''
 
 '''
+
 caminho = sol.amplitude(origem,destino,dim_x,dim_y,obs)
 print("\nAmplitude.......: ",caminho,'\n')
 
 caminho1 = []
 for no in caminho:
+    print(mapa[no[0]][no[1]])
     caminho1.append(mapa[no[0]][no[1]])
 print("\nAmplitude.......: ",caminho1)
 
@@ -563,17 +626,32 @@ for no in caminho:
     caminho1.append(mapa[no[0]][no[1]])
 print("\nProfundidade.......: ",caminho1)
 
-
+'''
 caminho = sol.prof_limitada(origem,destino,dim_x,dim_y,obs,limite)
-print("\nProf_Limitada.......: ",caminho,'\n')
+if len(caminho)>0:
+    print("\nProf_limitada.......: ",caminho,'\n')
 
-caminho1 = []
-for no in caminho:
-    caminho1.append(mapa[no[0]][no[1]])
-print("\nProf_Limitada.......: ",caminho1)
+    caminho1 = []
+    for no in caminho:
+        caminho1.append(mapa[no[0]][no[1]])
+    print("\nProf_limitada.......: ",caminho1)
+else:
+    print("\nProf_limitada.......: Caminho não encontrado")
+'''
+caminho = sol.aprof_iterativo(origem,destino,dim_x,dim_y,obs,limite)
+if len(caminho)>0:
+    print("\nAprof_iterativo.......: ",caminho,'\n')
+
+    caminho1 = []
+    for no in caminho:
+        caminho1.append(mapa[no[0]][no[1]])
+    print("\nAprof_iterativo.......: ",caminho1)
+else:
+    print("\nAprof_iterativo.......: Caminho não encontrado")
+
 
 caminho = sol.bidirecional(origem,destino, dim_x, dim_y, obs)
-print("\n*****BIDIRECIONAL*****\n",caminho,'\n')
+print("\nBIDIRECIONAL.......: ",caminho,'\n')
 
 caminho1 = []
 for no in caminho:
