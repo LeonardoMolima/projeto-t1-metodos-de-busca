@@ -353,9 +353,8 @@ class busca(object):
                     
         return "Caminho não encontrado"
 
-    def aia_estrela(self, inicio, fim, limite):
+    def aia_estrela(self,inicio,fim,dx,dy,obs,limite):
         
-        ind_f = nos.index(fim)
         while True:
             lim_exc = []
             l1 = lista()
@@ -369,51 +368,58 @@ class busca(object):
             linha.append(0)
             visitado.append(linha)
             
-            print("Limite: ",limite)
             while l1.vazio() == False:
                 atual = l1.deletaPrimeiro()
                 
-                if atual.estado == fim:
+                if atual.coordenada == fim:
                     caminho = []
-                    caminho = l2.exibeArvore2(atual.estado,atual.valor1)
-                    #print("Cópia da árvore:\n",l2.exibeLista())
-                    #print("\nÁrvore de busca:\n",l1.exibeLista(),"\n")
-    
-                    return caminho, atual.valor2
+                    caminho = l2.exibeArvore2(atual.coordenada,atual.valor1)
+                    return caminho[::-1], atual.valor2
             
-                ind = nos.index(atual.estado)
-                for novo in grafo[ind]:
-                    
-                    ind1 = nos.index(novo[0])
+                x = atual.coordenada[0]
+                y = atual.coordenada[1]
+    
+                filhos = []
+                filhos = self.sucessor(x,y,dx,dy,obs)
+    
+                for novo in filhos:
+                    aux = []
+                    aux.append(novo[0])
+                    aux.append(novo[1])
                     
                     # CÁLCULO DO CUSTO DA ORIGEM ATÉ O NÓ ATUAL
-                    v2 = atual.valor2 + novo[1]  # custo do caminho
-                    v1 = v2 + h[ind_f][ind1] # f2(n)
-    
+                    v2 = atual.valor2 + novo[2]  
+                    # VALOR DA FUNÇÃO F(N)
+                    v1 = v2 + self.heuristica(aux,fim)
+                    
                     if v1<=limite:
+                        # suponho que não foi visitado
+                        # ou foi visitado com valor pior
                         flag1 = True
+                        # suponho que não foi visitado
                         flag2 = True
                         for j in range(len(visitado)):
-                            if visitado[j][0]==novo[0]:
+                            if visitado[j][0]==aux:
                                 if visitado[j][1]<=v2:
-                                    flag1 = False
+                                    # foi visitado e o valor
+                                    # é pior do que a visita
+                                    flag1 = False 
                                 else:
                                     visitado[j][1]=v2
                                     flag2 = False
                                 break
         
                         if flag1:
-                            l1.inserePos_X(novo[0], v1 , v2, atual)
-                            l2.inserePos_X(novo[0], v1, v2, atual)
+                            l1.inserePos_X(aux,v1,v2,atual)
+                            l2.inserePos_X(aux,v1,v2,atual)
                             if flag2:
                                 linha = []
-                                linha.append(novo[0])
+                                linha.append(aux)
                                 linha.append(v2)
                                 visitado.append(linha)
                     else:
                         lim_exc.append(v1)
-            limite = sum(lim_exc)/len(lim_exc)
-                    
+                limite = sum(lim_exc)/len(lim_exc)
         return "Caminho não encontrado"
             
     def heuristica(self,atual,objetivo):
@@ -503,6 +509,16 @@ inicio  = [0,0]
 final = [5,5]
 mapa, obs = gera_Ambiente(dx,dy)
 
+caminho, custo = sol.aia_estrela(inicio,final,dx,dy,obs,sol.heuristica(inicio,final))
+print("\nAIA estrela: ",caminho,"\ncusto do caminho: ",custo)
+caminho1 = []
+print(caminho);
+for no in caminho:
+    aux = f'{mapa[no[0]][no[1]]}'
+    caminho1.append(aux)
+
+print(caminho1);
+
 
 caminho, custo = sol.custo_uniforme(inicio,final,dx,dy,obs)
 print("Custo Uniforme: ",caminho[::-1],"\nCusto do Caminho: ",custo)
@@ -523,6 +539,7 @@ for no in caminho:
     caminho1.append(aux)
 
 print(caminho1);
+
 
 caminho, custo = sol.a_estrela(inicio,final,dx,dy,obs)
 print("\nA estrela: ",caminho[::-1],"\ncusto do caminho: ",custo)

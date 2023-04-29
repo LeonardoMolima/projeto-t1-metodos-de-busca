@@ -597,7 +597,7 @@ sol = busca()
 caminho = []
 
 # PROBLEMA C
-
+'''
 dim_x = 6
 dim_y = 6
 origem  = [0,0]
@@ -605,7 +605,7 @@ destino = [5,5]
 mapa, obs = gera_Ambiente(dim_x,dim_y)
 limite = 12
 #print(mapa)
-
+'''
 '''
 
 caminho = sol.amplitude(origem,destino,dim_x,dim_y,obs)
@@ -626,7 +626,7 @@ for no in caminho:
     caminho1.append(mapa[no[0]][no[1]])
 print("\nProfundidade.......: ",caminho1)
 
-'''
+
 caminho = sol.prof_limitada(origem,destino,dim_x,dim_y,obs,limite)
 if len(caminho)>0:
     print("\nProf_limitada.......: ",caminho,'\n')
@@ -637,7 +637,7 @@ if len(caminho)>0:
     print("\nProf_limitada.......: ",caminho1)
 else:
     print("\nProf_limitada.......: Caminho não encontrado")
-'''
+
 caminho = sol.aprof_iterativo(origem,destino,dim_x,dim_y,obs,limite)
 if len(caminho)>0:
     print("\nAprof_iterativo.......: ",caminho,'\n')

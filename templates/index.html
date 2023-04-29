@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
-</head>
-
-<style>
-
-    section{
+    <title>Métodos de Busca</title>
+    <style>
+        section{
         width: 300px;
         display: flex;
         flex-direction: row;
@@ -21,7 +18,7 @@
         margin: 4px;
         width: 40px;
         height: 40px;
-        background-color: rgb(0, 255, 76);
+        background-color: rgb(174, 0, 255);
         text-align: center;
         display: flex;
         justify-content: center;
@@ -31,68 +28,245 @@
     h1{
         color: red;
         }
-</style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-content {
+            width: 500px;
+            height: fit-content;
+            margin-top: 2.5rem;
+        }
+
+        .main-content .card {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background: rgba( 255, 255, 255, 0.35 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 13.5px );
+            -webkit-backdrop-filter: blur( 13.5px );
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+        }
+
+        .main-content .card-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 60vh;
+        }
+
+        /* .main-content .card-header img{
+            width: 80%;
+            height: 90%;
+        } */
+
+        .card-body .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body .row {
+            display: flex;
+            flex-direction: row;
+            /* padding-inline: 20%; */
+        }
+
+        form select,
+        #btn-enviar{
+            border-radius: 6px;
+            height: 30px;
+            margin: 10px 0;
+            width: 30%;
+            margin-inline: 10%;
+        }
+
+        #btn-enviar{
+            width: 80%;
+            margin-bottom: 1.4em;
+        }
+
+        form #input-limite{
+            border-radius: 6px;
+            height: 30px;
+            margin: 10px 0;
+            width: 30%;
+            margin-inline: 10%;
+        }
+
+        select:hover {
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
 
 <body>
-    <h1>Programa Luis Fernando</h1>
-    
+    <div class="main-content">
+        <div class="card">
+            <div class="card-header" style="background-color: rgb(19, 0, 63); border-radius: 10px;">
+                <div class="w">
+                    <section style="color: white; font-family: sans-serif;">
+        
+                      <div>C1</div>
+                      <div>C2</div>
+                      <div>C3</div>
+                      <div>C4</div>
+                      <div>C5</div>
+                      <div>C6</div>
+            
+                      <div>C7</div>
+                      <div>C8</div>
+                      <div>C9</div>
+                      <div>C10</div>
+                      <div>C11</div>
+                      <div>C12</div>
+            
+                      <div>C13</div>
+                      <div>C14</div>
+                      <div>C15</div>
+                      <div>C16</div>
+                      <div>C17</div>
+                      <div>C18</div>
+            
+                      <div>C19</div>
+                      <div>C20</div>
+                      <div>C21</div>
+                      <div>C22</div>
+                      <div>C23</div>
+                      <div>C24</div>
+            
+                      <div>C25</div>
+                      <div>C26</div>
+                      <div>C27</div>
+                      <div>C28</div>
+                      <div>C29</div>
+                      <div>C30</div>
+            
+                      <div>C31</div>
+                      <div>C32</div>
+                      <div>C33</div>
+                      <div>C34</div>
+                      <div>C35</div>
+                      <div>C36</div>
 
-    <div class="w">
-        <section>
+                    </section>
+                  </div>
+            </div>
+            <div class="card-body">
+                <form action="/grid" method="post">
+                    <div class="row">
+                        
+                        <select name="optionInit" id="optionInit">
+                            <option value="" disabled selected>Selecione o Início</option>
+                            <option value="00">C1</option>
+                            <option value="01">C2</option>
+                            <option value="02">C3</option>
+                            <option value="03">C4</option>
+                            <option value="04">C5</option>
+                            <option value="05">C6</option>
+                            <option value="10">C7</option>
+                            <option value="11">C8</option>
+                            <option value="12">C9</option>
+                            <option value="13">C10</option>
+                            <option value="14">C11</option>
+                            <option value="15">C12</option>
+                            <option value="20">C13</option>
+                            <option value="21">C14</option>
+                            <option value="22">C15</option>
+                            <option value="23">C16</option>
+                            <option value="24">C17</option>
+                            <option value="25">C18</option>
+                            <option value="30">C19</option>
+                            <option value="31">C20</option>
+                            <option value="32">C21</option>
+                            <option value="33">C22</option>
+                            <option value="34">C23</option>
+                            <option value="35">C24</option>
+                            <option value="40">C25</option>
+                            <option value="41">C26</option>
+                            <option value="42">C27</option>
+                            <option value="43">C28</option>
+                            <option value="44">C29</option>
+                            <option value="45">C30</option>
+                            <option value="50">C31</option>
+                            <option value="51">C32</option>
+                            <option value="52">C33</option>
+                            <option value="53">C34</option>
+                            <option value="54">C35</option>
+                            <option value="55">C36</option>
+                        </select>
 
-            {% for x in range(resultado|count) %}
-                {% if resultado[x] == 0%}
-                    <div style="background-color: crimson;">{{resultado[x]}}</div>
-                {% else %}
-                    <div>{{resultado[x]}}</div>
-                {% endif %}
-            {% endfor %}
- <!--
-          <div>C1</div>
-          <div>C2</div>
-          <div>C3</div>
-          <div>C4</div>
-          <div>C5</div>
-          <div>C6</div>
+                        <select name="optionEnd" id="optionEnd">
+                            <option value="" disabled selected>Selecione o Fim</option>
+                            <option value="00">C1</option>
+                            <option value="01">C2</option>
+                            <option value="02">C3</option>
+                            <option value="03">C4</option>
+                            <option value="04">C5</option>
+                            <option value="05">C6</option>
+                            <option value="10">C7</option>
+                            <option value="11">C8</option>
+                            <option value="12">C9</option>
+                            <option value="13">C10</option>
+                            <option value="14">C11</option>
+                            <option value="15">C12</option>
+                            <option value="20">C13</option>
+                            <option value="21">C14</option>
+                            <option value="22">C15</option>
+                            <option value="23">C16</option>
+                            <option value="24">C17</option>
+                            <option value="25">C18</option>
+                            <option value="30">C19</option>
+                            <option value="31">C20</option>
+                            <option value="32">C21</option>
+                            <option value="33">C22</option>
+                            <option value="34">C23</option>
+                            <option value="35">C24</option>
+                            <option value="40">C25</option>
+                            <option value="41">C26</option>
+                            <option value="42">C27</option>
+                            <option value="43">C28</option>
+                            <option value="44">C29</option>
+                            <option value="45">C30</option>
+                            <option value="50">C31</option>
+                            <option value="51">C32</option>
+                            <option value="52">C33</option>
+                            <option value="53">C34</option>
+                            <option value="54">C35</option>
+                            <option value="55">C36</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        
+                        <select name="optionAlgorithm" id="optionAlgorithm">
+                            <option value="" disabled selected>Selecione o Método</option>
+                            <option value="1">Amplitude</option>
+                            <option value="2">Profundidade</option>
+                            <option value="3">Profundidade Limitada</option>
+                            <option value="4">Aprofundamento Iterativo</option>
+                            <option value="5">Bidirecional</option>
+                            <option value="6">Custo Uniforme</option>
+                            <option value="7">Greedy</option>
+                            <option value="8">A Estrela</option>
+                            <option value="9">AIA Estrela</option>
+                        </select>
 
-          <div>C7</div>
-          <div>C8</div>
-          <div>C9</div>
-          <div>C10</div>
-          <div>C11</div>
-          <div>C12</div>
+                        
+                        <input placeholder="Informe o Limite" id="input-limite" type="number" name="limite" min="0" required>
 
-          <div>C13</div>
-          <div>C14</div>
-          <div>C15</div>
-          <div>C16</div>
-          <div>C17</div>
-          <div>C18</div>
+                        
+                    </div>
+                    <input style="cursor: pointer;" id="btn-enviar" type="submit" value="Enviar">
+                </form>
 
-          <div>C19</div>
-          <div>C20</div>
-          <div>C21</div>
-          <div>C22</div>
-          <div>C23</div>
-          <div>C24</div>
-
-          <div>C25</div>
-          <div>C26</div>
-          <div>C27</div>
-          <div>C28</div>
-          <div>C29</div>
-          <div>C30</div>
-
-          <div>C31</div>
-          <div>C32</div>
-          <div>C33</div>
-          <div>C34</div>
-          <div>C35</div>
-          <div>C36</div>
-          -->
-        </section>
-      </div>
-
-
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
