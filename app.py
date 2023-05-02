@@ -58,6 +58,13 @@ def grid():
     elif(metodo == 9):
         caminho, custo = busca_com_pesos_grid_FATEC.sol.aia_estrela(origem,destino,dim_x,dim_y,obs,busca_com_pesos_grid_FATEC.sol.heuristica(origem,destino))
     
+    print("CAMINHOOOOO= ",caminho)
+
+    if caminho == []:
+        custo = False
+        testeElementos = False
+        return render_template('gridResultado.html', resultado=testeElementos, custo=custo)
+
     caminho1 = []
     for no in caminho:
         print("No caminho= ",no)
@@ -74,6 +81,8 @@ def grid():
 
     testeElementos = []
     y=0;
+
+    print("CAMINHOOOOO1111= ",caminho1)
 
     for x in range(len(map)):
         if map[x] == caminho1[y]:

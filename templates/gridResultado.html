@@ -111,7 +111,11 @@
             <div class="card-header" style="background-color: rgb(19, 0, 63); border-radius: 10px;">
                 <div class="w">
                     <section style="color: white; font-family: sans-serif;">
-        
+                        
+                    {% if resultado == false%} 
+                        <h1>Caminho não encontrado</h1>
+                    {% else %}
+
                     {% for x in range(resultado|count) %}
                         {% if resultado[x] == 0%}
                             <div style="background-color: crimson;">{{resultado[x]}}</div>
@@ -119,6 +123,8 @@
                             <div>{{resultado[x]}}</div>
                         {% endif %}
                     {% endfor %}
+
+                    {% endif %}
                         
                     </section>
                   </div>
