@@ -118,7 +118,7 @@
                       <div>C4</div>
                       <div>C5</div>
                       <div>C6</div>
-            
+    
                       <div>C7</div>
                       <div>C8</div>
                       <div>C9</div>
@@ -153,6 +153,7 @@
                       <div>C34</div>
                       <div>C35</div>
                       <div>C36</div>
+                      
 
                     </section>
                   </div>
@@ -161,7 +162,7 @@
                 <form action="/grid" method="post">
                     <div class="row">
                         
-                        <select name="optionInit" id="optionInit">
+                        <select name="optionInit" id="optionInit" required>
                             <option value="" disabled selected>Selecione o Início</option>
                             <option value="00">C1</option>
                             <option value="01">C2</option>
@@ -201,7 +202,7 @@
                             <option value="55">C36</option>
                         </select>
 
-                        <select name="optionEnd" id="optionEnd">
+                        <select name="optionEnd" id="optionEnd" required>
                             <option value="" disabled selected>Selecione o Fim</option>
                             <option value="00">C1</option>
                             <option value="01">C2</option>
@@ -243,7 +244,7 @@
                     </div>
                     <div class="row">
                         
-                        <select name="optionAlgorithm" id="optionAlgorithm">
+                        <select name="optionAlgorithm" id="optionAlgorithm" required>
                             <option value="" disabled selected>Selecione o Método</option>
                             <option value="1">Amplitude</option>
                             <option value="2">Profundidade</option>

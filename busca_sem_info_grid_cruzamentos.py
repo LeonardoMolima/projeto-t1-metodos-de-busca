@@ -366,7 +366,7 @@ class busca(object):
                                 print("Árvore de busca:\n",l2.exibeLista())
                                 return caminho
         
-        return caminho
+        return []
     
     # BUSCA BIDIRECIONAL
     def bidirecional(self, inicio, fim, dx, dy, obs):
